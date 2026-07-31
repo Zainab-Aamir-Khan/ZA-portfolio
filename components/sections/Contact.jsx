@@ -1,12 +1,16 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [inView, setInView] = useState(true)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  
   const sectionRef = useRef(null)
+  const formRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,19 +25,35 @@ export default function Contact() {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    if (e) e.preventDefault()
     if (!form.name || !form.email || !form.message) return
+    
     setSending(true)
-    // Opens mailto as fallback — replace with EmailJS or Formspree later
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`)
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)
-    window.open(`mailto:zaamir427@gmail.com?subject=${subject}&body=${body}`)
-    setTimeout(() => {
+    setError('')
+
+    // EmailJS Send Form Call
+    emailjs.send(
+      'service_20bydqr',   // Replace with your EmailJS Service ID
+      'template_xnbvros',  // Replace with your EmailJS Template ID
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+      },
+      'xBeGP8SkwMFT2sgBx'    // Replace with your EmailJS Public Key
+    )
+    .then(() => {
       setSending(false)
       setSent(true)
       setForm({ name: '', email: '', message: '' })
-      setTimeout(() => setSent(false), 4000)
-    }, 800)
+      setTimeout(() => setSent(false), 5000)
+    })
+    .catch((err) => {
+      console.error('EmailJS Error:', err)
+      setSending(false)
+      setError('Failed to send message. Please try again.')
+    })
   }
 
   return (
@@ -54,13 +74,13 @@ export default function Contact() {
             position: 'absolute', top: '50%', left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '500px', height: '200px',
-            background: 'radial-gradient(ellipse, rgba(110,231,183,0.05) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(163,118,162,0.15) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
           <div style={{
             fontSize: '9px',
-            color: 'var(--accent)',
+            color: 'var(--accent-orchid, #A376A2)',
             fontFamily: '"Courier New", monospace',
             letterSpacing: '0.18em',
             marginBottom: '16px',
@@ -70,21 +90,21 @@ export default function Contact() {
           </div>
 
           <h2 style={{
-            fontFamily: 'var(--font-display, Syne), sans-serif',
+            fontFamily: 'var(--font-display, "Plus Jakarta Sans"), sans-serif',
             fontSize: 'clamp(2.2rem, 6vw, 4rem)',
             fontWeight: 800,
-            color: 'var(--text)',
+            color: 'var(--text-main, #FFFFFF)',
             margin: '0 0 14px',
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
           }}>
             Have an idea?<br/>
-            <span style={{ color: 'var(--accent)' }}>Let's build it.</span>
+            <span style={{ color: 'var(--accent-orchid, #A376A2)' }}>Let's build it.</span>
           </h2>
 
           <p style={{
             fontSize: '13px',
-            color: 'var(--text-muted)',
+            color: 'var(--text-muted, #D8C4D6)',
             margin: '0 auto',
             maxWidth: '440px',
             lineHeight: 1.75,
@@ -94,28 +114,30 @@ export default function Contact() {
         </div>
 
         {/* ── Open borderless form ── */}
-        <div style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s',
-        }}>
+        <form 
+          ref={formRef}
+          onSubmit={handleSubmit}
+          style={{
+            maxWidth: '600px',
+            margin: '0 auto',
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s',
+          }}
+        >
 
           {/* Name row */}
           <div style={{
             display: 'flex',
             gap: '20px',
             alignItems: 'center',
-            borderBottom: '1px solid var(--border)',
+            borderBottom: '1px solid var(--border-plum, #835281)',
             padding: '14px 0',
             transition: 'border-color 0.2s',
-          }}
-            onFocus={() => {}}
-          >
+          }}>
             <label style={{
               fontSize: '11px',
-              color: 'var(--text-muted)',
+              color: 'var(--text-muted, #D8C4D6)',
               width: '80px',
               flexShrink: 0,
               letterSpacing: '0.04em',
@@ -127,12 +149,13 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               placeholder="Your full name"
+              required
               style={{
                 flex: 1,
                 background: 'transparent',
                 border: 'none',
                 fontSize: '13px',
-                color: 'var(--text)',
+                color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
                 fontFamily: 'inherit',
               }}
@@ -144,12 +167,12 @@ export default function Contact() {
             display: 'flex',
             gap: '20px',
             alignItems: 'center',
-            borderBottom: '1px solid var(--border)',
+            borderBottom: '1px solid var(--border-plum, #835281)',
             padding: '14px 0',
           }}>
             <label style={{
               fontSize: '11px',
-              color: 'var(--text-muted)',
+              color: 'var(--text-muted, #D8C4D6)',
               width: '80px',
               flexShrink: 0,
               letterSpacing: '0.04em',
@@ -162,12 +185,13 @@ export default function Contact() {
               onChange={handleChange}
               placeholder="your@email.com"
               type="email"
+              required
               style={{
                 flex: 1,
                 background: 'transparent',
                 border: 'none',
                 fontSize: '13px',
-                color: 'var(--text)',
+                color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
                 fontFamily: 'inherit',
               }}
@@ -179,12 +203,12 @@ export default function Contact() {
             display: 'flex',
             gap: '20px',
             alignItems: 'flex-start',
-            borderBottom: '1px solid var(--border)',
+            borderBottom: '1px solid var(--border-plum, #835281)',
             padding: '14px 0',
           }}>
             <label style={{
               fontSize: '11px',
-              color: 'var(--text-muted)',
+              color: 'var(--text-muted, #D8C4D6)',
               width: '80px',
               flexShrink: 0,
               paddingTop: '2px',
@@ -198,12 +222,13 @@ export default function Contact() {
               onChange={handleChange}
               placeholder="Tell me about your project or idea..."
               rows={4}
+              required
               style={{
                 flex: 1,
                 background: 'transparent',
                 border: 'none',
                 fontSize: '13px',
-                color: 'var(--text)',
+                color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
                 resize: 'none',
                 fontFamily: 'inherit',
@@ -212,10 +237,16 @@ export default function Contact() {
             />
           </div>
 
+          {error && (
+            <div style={{ color: '#F87171', fontSize: '12px', marginTop: '12px' }}>
+              {error}
+            </div>
+          )}
+
           {/* Submit row */}
           <div style={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justify: 'space-between',
             alignItems: 'center',
             paddingTop: '20px',
             flexWrap: 'wrap',
@@ -230,18 +261,18 @@ export default function Contact() {
                 display: 'inline-block',
                 animation: 'glow 2s infinite',
               }} />
-              <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+              <span style={{ fontSize: '11px', color: 'var(--text-muted, #D8C4D6)' }}>
                 Available · Responds within 24h
               </span>
             </div>
 
             <button
-              onClick={handleSubmit}
+              type="submit"
               disabled={sending || sent}
               style={{
-                background: sent ? 'var(--bg-surface)' : 'var(--accent)',
-                color: sent ? 'var(--accent)' : 'var(--bg)',
-                border: sent ? '1px solid var(--accent)' : 'none',
+                background: sent ? 'transparent' : 'var(--accent-orchid, #A376A2)',
+                color: '#FFFFFF',
+                border: sent ? '1px solid var(--accent-orchid, #A376A2)' : 'none',
                 padding: '11px 28px',
                 borderRadius: '8px',
                 fontSize: '13px',
@@ -262,9 +293,9 @@ export default function Contact() {
           <div style={{
             marginTop: '48px',
             paddingTop: '24px',
-            borderTop: '1px solid var(--border)',
+            borderTop: '1px solid var(--border-plum, #835281)',
             display: 'flex',
-            justifyContent: 'center',
+            justify: 'center',
             gap: '28px',
             flexWrap: 'wrap',
           }}>
@@ -280,19 +311,19 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 style={{
                   fontSize: '11px',
-                  color: 'var(--text-muted)',
+                  color: 'var(--text-muted, #D8C4D6)',
                   textDecoration: 'none',
                   fontFamily: '"Courier New", monospace',
                   transition: 'color 0.2s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-orchid, #A376A2)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted, #D8C4D6)'}
               >
                 {l.label}
               </a>
             ))}
           </div>
-        </div>
+        </form>
       </div>
 
       <style>{`
@@ -301,7 +332,7 @@ export default function Contact() {
           50% { opacity: 0.5; box-shadow: 0 0 12px #4ADE80; }
         }
         input::placeholder, textarea::placeholder {
-          color: var(--text-muted);
+          color: var(--text-muted, #D8C4D6);
           opacity: 0.5;
         }
       `}</style>
