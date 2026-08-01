@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
 
-// Screenshot from live URL — using screenshot API
+// Screenshot fallback from live URL — using screenshot API
 function getScreenshot(url) {
   if (!url) return null
   return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`
@@ -9,9 +9,21 @@ function getScreenshot(url) {
 
 const featuredProjects = [
   {
+    name: 'Scientific Calculator',
+    title: 'Scientific Calculator',
+    desc: 'A feature-rich scientific calculator with a clean and intuitive interface.',
+    image: 'images/projects/p1.png', // Add your image path here
+    live: 'https://kiranshamshere.github.io-scientific-calculator',
+    github: 'https://github.com/kiranShamsHere/scientific-calculator',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    color: '#6EE7B7',
+    cat: ['all', 'featured', 'frontend'],
+  },
+  {
     name: 'Ecommerce-furnitureWebsite',
     title: 'Furniture E-commerce',
     desc: 'Full ecommerce furniture website designed using HTML, CSS & JS. Inspired by a Behance design, recreated in Figma then built from scratch.',
+    image: 'images/projects/furniture.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/Ecommerce-furnitureWebsite',
     github: 'https://github.com/kiranShamsHere/Ecommerce-furnitureWebsite',
     tags: ['HTML', 'CSS', 'JavaScript'],
@@ -19,19 +31,10 @@ const featuredProjects = [
     cat: ['all', 'featured', 'frontend'],
   },
   {
-    name: 'restaurantWebsite',
-    title: 'Restaurant Website',
-    desc: 'Responsive restaurant site with smooth navigation, interactive menu, reservation system and animations.',
-    live: 'https://kiranshamshere.github.io/restaurantWebsite',
-    github: 'https://github.com/kiranShamsHere/restaurantWebsite',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    color: '#6EE7B7',
-    cat: ['all', 'featured', 'frontend'],
-  },
-  {
     name: 'currencyConverter',
     title: 'Currency Converter',
     desc: 'Real-time currency converter using live exchange rate API with a clean minimal UI.',
+    image: '/projects/currency.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/currencyConverter',
     github: 'https://github.com/kiranShamsHere/currencyConverter',
     tags: ['JavaScript', 'API'],
@@ -42,6 +45,7 @@ const featuredProjects = [
     name: 'Github-Username-Updater',
     title: 'GitHub Username Updater',
     desc: 'Python + Flask automation tool to find and replace your GitHub username across all repositories. MIT Licensed, open source.',
+    image: '/projects/github-updater.png', // Add your image path here
     live: 'https://github.com/kiranShamsHere/Github-Username-Updater',
     github: 'https://github.com/kiranShamsHere/Github-Username-Updater',
     tags: ['Python', 'Flask', 'Open Source'],
@@ -52,6 +56,7 @@ const featuredProjects = [
     name: 'analogClock',
     title: 'Analog Clock',
     desc: 'Analog clock with light/dark mode toggle stored in localStorage. Smooth second-hand animation.',
+    image: '/projects/clock.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/analogClock',
     github: 'https://github.com/kiranShamsHere/analogClock',
     tags: ['HTML', 'CSS', 'JS'],
@@ -62,6 +67,7 @@ const featuredProjects = [
     name: 'dictionary-app-with-JS',
     title: 'Dictionary App',
     desc: 'Dictionary app built with JavaScript using a public dictionary API. Search any word for definitions, phonetics and examples.',
+    image: '/projects/dictionary.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/dictionary-app-with-JS',
     github: 'https://github.com/kiranShamsHere/dictionary-app-with-JS',
     tags: ['JavaScript', 'API', 'CSS'],
@@ -72,6 +78,7 @@ const featuredProjects = [
     name: 'myCoffeeShop',
     title: 'Coffee Shop Website',
     desc: 'A beautiful responsive coffee shop website with menu, gallery and contact section.',
+    image: '/projects/coffeeshop.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/myCoffeeShop',
     github: 'https://github.com/kiranShamsHere/myCoffeeShop',
     tags: ['HTML', 'CSS', 'JS'],
@@ -82,6 +89,7 @@ const featuredProjects = [
     name: 'hairSalonWebsite',
     title: 'Hair Salon Website',
     desc: 'Responsive hair salon website with booking section and services showcase.',
+    image: '/projects/hairsalon.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/hairSalonWebsite',
     github: 'https://github.com/kiranShamsHere/hairSalonWebsite',
     tags: ['HTML', 'CSS', 'JS'],
@@ -92,6 +100,7 @@ const featuredProjects = [
     name: 'text-to-speech-converter',
     title: 'Text to Speech',
     desc: 'Text to speech converter using the Web Speech API. Supports multiple voices and speed control.',
+    image: '/projects/text-to-speech.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/text-to-speech-converter',
     github: 'https://github.com/kiranShamsHere/text-to-speech-converter',
     tags: ['JavaScript', 'Web API'],
@@ -114,7 +123,9 @@ function ProjectCard({ project, index, inView }) {
   const [hovered, setHovered] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
   const [imgError, setImgError] = useState(false)
-  const screenshotUrl = getScreenshot(project.live)
+  
+  // Uses specified custom image first, falls back to live screenshot API
+  const displayImage = project.image || getScreenshot(project.live)
 
   return (
     <div
@@ -135,7 +146,7 @@ function ProjectCard({ project, index, inView }) {
         transitionDelay: `${index * 0.07}s`,
       }}
     >
-      {/* Screenshot image area */}
+      {/* Screenshot / Custom image area */}
       <div style={{
         width: '100%',
         aspectRatio: '16/9',
@@ -153,9 +164,9 @@ function ProjectCard({ project, index, inView }) {
           }} />
         )}
 
-        {screenshotUrl && !imgError ? (
+        {displayImage && !imgError ? (
           <img
-            src={screenshotUrl}
+            src={displayImage}
             alt={project.title}
             style={{
               width: '100%', height: '100%',

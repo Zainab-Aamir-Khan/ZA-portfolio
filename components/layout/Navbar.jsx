@@ -100,7 +100,7 @@ export default function Navbar() {
           color: textColor, textDecoration: 'none',
           letterSpacing: '-0.02em', flexShrink: 0,
         }}>
-          KS<span style={{ color: accentColor }}>.</span>
+          ZA<span style={{ color: accentColor }}>.</span>
         </a>
 
         {/* Desktop links */}
