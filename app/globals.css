@@ -39,7 +39,7 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: "times new roman", serif;
+  font-family: 'Dancing Script', 'Pacifico', cursive;
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
