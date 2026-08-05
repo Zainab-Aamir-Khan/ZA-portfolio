@@ -34,7 +34,7 @@ const featuredProjects = [
     name: 'currencyConverter',
     title: 'Currency Converter',
     desc: 'Real-time currency converter using live exchange rate API with a clean minimal UI.',
-    image: '/projects/currency.png', // Add your image path here
+    image: 'images/projects/currency.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/currencyConverter',
     github: 'https://github.com/kiranShamsHere/currencyConverter',
     tags: ['JavaScript', 'API'],
@@ -45,7 +45,7 @@ const featuredProjects = [
     name: 'Github-Username-Updater',
     title: 'GitHub Username Updater',
     desc: 'Python + Flask automation tool to find and replace your GitHub username across all repositories. MIT Licensed, open source.',
-    image: '/projects/github-updater.png', // Add your image path here
+    image: 'images/projects/github-updater.png', // Add your image path here
     live: 'https://github.com/kiranShamsHere/Github-Username-Updater',
     github: 'https://github.com/kiranShamsHere/Github-Username-Updater',
     tags: ['Python', 'Flask', 'Open Source'],
@@ -56,7 +56,7 @@ const featuredProjects = [
     name: 'analogClock',
     title: 'Analog Clock',
     desc: 'Analog clock with light/dark mode toggle stored in localStorage. Smooth second-hand animation.',
-    image: '/projects/clock.png', // Add your image path here
+    image: 'images/projects/clock.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/analogClock',
     github: 'https://github.com/kiranShamsHere/analogClock',
     tags: ['HTML', 'CSS', 'JS'],
@@ -67,7 +67,7 @@ const featuredProjects = [
     name: 'dictionary-app-with-JS',
     title: 'Dictionary App',
     desc: 'Dictionary app built with JavaScript using a public dictionary API. Search any word for definitions, phonetics and examples.',
-    image: '/projects/dictionary.png', // Add your image path here
+    image: 'images/projects/dictionary.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/dictionary-app-with-JS',
     github: 'https://github.com/kiranShamsHere/dictionary-app-with-JS',
     tags: ['JavaScript', 'API', 'CSS'],
@@ -78,7 +78,7 @@ const featuredProjects = [
     name: 'myCoffeeShop',
     title: 'Coffee Shop Website',
     desc: 'A beautiful responsive coffee shop website with menu, gallery and contact section.',
-    image: '/projects/coffeeshop.png', // Add your image path here
+    image: 'images/projects/coffeeshop.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/myCoffeeShop',
     github: 'https://github.com/kiranShamsHere/myCoffeeShop',
     tags: ['HTML', 'CSS', 'JS'],
@@ -89,7 +89,7 @@ const featuredProjects = [
     name: 'hairSalonWebsite',
     title: 'Hair Salon Website',
     desc: 'Responsive hair salon website with booking section and services showcase.',
-    image: '/projects/hairsalon.png', // Add your image path here
+    image: 'images/projects/hairsalon.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/hairSalonWebsite',
     github: 'https://github.com/kiranShamsHere/hairSalonWebsite',
     tags: ['HTML', 'CSS', 'JS'],
@@ -100,7 +100,7 @@ const featuredProjects = [
     name: 'text-to-speech-converter',
     title: 'Text to Speech',
     desc: 'Text to speech converter using the Web Speech API. Supports multiple voices and speed control.',
-    image: '/projects/text-to-speech.png', // Add your image path here
+    image: 'images/projects/text-to-speech.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/text-to-speech-converter',
     github: 'https://github.com/kiranShamsHere/text-to-speech-converter',
     tags: ['JavaScript', 'Web API'],
