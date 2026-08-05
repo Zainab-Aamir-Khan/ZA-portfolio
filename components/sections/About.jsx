@@ -214,7 +214,7 @@ export default function About() {
           }}>
             {/* Full cover image */}
             <img
-              src="/images/zainab.jpg"
+              src="images/zainab.png"
               alt="Zainab Aamir"
               style={{
                 position: 'absolute',
