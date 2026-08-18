@@ -20,14 +20,14 @@ const featuredProjects = [
     cat: ['all', 'featured', 'frontend'],
   },
   {
-    name: 'Ecommerce-furnitureWebsite',
-    title: 'Furniture E-commerce',
-    desc: 'Full ecommerce furniture website designed using HTML, CSS & JS. Inspired by a Behance design, recreated in Figma then built from scratch.',
-    image: 'images/projects/furniture.png', // Add your image path here
+    name: 'Student Management System',
+    title: 'Student Management System',
+    desc: 'Full SMS designed using HTML, CSS, JS and React.',
+    image: '/images/SMS.png', // Add your image path here
     live: 'https://kiranshamshere.github.io/Ecommerce-furnitureWebsite',
     github: 'https://github.com/kiranShamsHere/Ecommerce-furnitureWebsite',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    color: '#818CF8',
+    color: '#4ADE80',
     cat: ['all', 'featured', 'frontend'],
   },
   {
