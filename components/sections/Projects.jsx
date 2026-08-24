@@ -30,6 +30,17 @@ const featuredProjects = [
     color: '#4ADE80',
     cat: ['all', 'featured', 'frontend'],
   },
+  {
+    name: 'Literary Publishers',
+    title: 'Literary Publishers',
+    desc: 'A platform for literary enthusiasts to share and discover new publications.',
+    image: '/images/projects/p3.png', // Add your image path here
+     live: 'https://literary-publishers.vercel.app/',
+     github: 'https://github.com/Zainab-Aamir-Khan/LiteraryPublishers',
+    tags: ['React', 'TypeScript', 'Emailjs'],
+    color: '#4ADE80',
+    cat: ['all', 'featured', 'frontend'],
+  },
   // {
   //   name: 'currencyConverter',
   //   title: 'Currency Converter',
