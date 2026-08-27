@@ -177,19 +177,7 @@ export default function Hero() {
           >
             Hire Me
           </a>
-          <a href="/resume.pdf" target="_blank" style={{
-            background: 'transparent', color: 'var(--text-muted)',
-            padding: '10px 24px', borderRadius: '7px',
-            textDecoration: 'none', fontWeight: 600, fontSize: '13px',
-            fontFamily: 'var(--font-body, DM Sans), sans-serif',
-            border: '1px solid var(--border)', display: 'inline-block',
-            transition: 'color 0.2s, border-color 0.2s, transform 0.2s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-2)'; e.currentTarget.style.borderColor = 'var(--accent-2)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateY(0)' }}
-          >
-            Download CV 
-          </a>
+          
         </div>
       </div>
 

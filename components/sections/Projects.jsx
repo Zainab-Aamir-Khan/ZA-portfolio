@@ -41,92 +41,12 @@ const featuredProjects = [
     color: '#4ADE80',
     cat: ['all', 'featured', 'frontend'],
   },
-  // {
-  //   name: 'currencyConverter',
-  //   title: 'Currency Converter',
-  //   desc: 'Real-time currency converter using live exchange rate API with a clean minimal UI.',
-  //   image: 'images/projects/currency.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/currencyConverter',
-  //   github: 'https://github.com/kiranShamsHere/currencyConverter',
-  //   tags: ['JavaScript', 'API'],
-  //   color: '#4ADE80',
-  //   cat: ['all', 'featured', 'frontend', 'tools'],
-  // },
-  // {
-  //   name: 'Github-Username-Updater',
-  //   title: 'GitHub Username Updater',
-  //   desc: 'Python + Flask automation tool to find and replace your GitHub username across all repositories. MIT Licensed, open source.',
-  //   image: 'images/projects/github-updater.png', // Add your image path here
-  //   live: 'https://github.com/kiranShamsHere/Github-Username-Updater',
-  //   github: 'https://github.com/kiranShamsHere/Github-Username-Updater',
-  //   tags: ['Python', 'Flask', 'Open Source'],
-  //   color: '#818CF8',
-  //   cat: ['all', 'backend', 'tools'],
-  // },
-  // {
-  //   name: 'analogClock',
-  //   title: 'Analog Clock',
-  //   desc: 'Analog clock with light/dark mode toggle stored in localStorage. Smooth second-hand animation.',
-  //   image: 'images/projects/clock.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/analogClock',
-  //   github: 'https://github.com/kiranShamsHere/analogClock',
-  //   tags: ['HTML', 'CSS', 'JS'],
-  //   color: '#6EE7B7',
-  //   cat: ['all', 'frontend', 'uni'],
-  // },
-  // {
-  //   name: 'dictionary-app-with-JS',
-  //   title: 'Dictionary App',
-  //   desc: 'Dictionary app built with JavaScript using a public dictionary API. Search any word for definitions, phonetics and examples.',
-  //   image: 'images/projects/dictionary.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/dictionary-app-with-JS',
-  //   github: 'https://github.com/kiranShamsHere/dictionary-app-with-JS',
-  //   tags: ['JavaScript', 'API', 'CSS'],
-  //   color: '#6EE7B7',
-  //   cat: ['all', 'frontend', 'tools'],
-  // },
-  // {
-  //   name: 'myCoffeeShop',
-  //   title: 'Coffee Shop Website',
-  //   desc: 'A beautiful responsive coffee shop website with menu, gallery and contact section.',
-  //   image: 'images/projects/coffeeshop.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/myCoffeeShop',
-  //   github: 'https://github.com/kiranShamsHere/myCoffeeShop',
-  //   tags: ['HTML', 'CSS', 'JS'],
-  //   color: '#818CF8',
-  //   cat: ['all', 'frontend'],
-  // },
-  // {
-  //   name: 'hairSalonWebsite',
-  //   title: 'Hair Salon Website',
-  //   desc: 'Responsive hair salon website with booking section and services showcase.',
-  //   image: 'images/projects/hairsalon.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/hairSalonWebsite',
-  //   github: 'https://github.com/kiranShamsHere/hairSalonWebsite',
-  //   tags: ['HTML', 'CSS', 'JS'],
-  //   color: '#4ADE80',
-  //   cat: ['all', 'frontend'],
-  // },
-  // {
-  //   name: 'text-to-speech-converter',
-  //   title: 'Text to Speech',
-  //   desc: 'Text to speech converter using the Web Speech API. Supports multiple voices and speed control.',
-  //   image: 'images/projects/text-to-speech.png', // Add your image path here
-  //   live: 'https://kiranshamshere.github.io/text-to-speech-converter',
-  //   github: 'https://github.com/kiranShamsHere/text-to-speech-converter',
-  //   tags: ['JavaScript', 'Web API'],
-  //   color: '#6EE7B7',
-  //   cat: ['all', 'frontend', 'tools'],
-  // },
 ]
 
 const tabs = [
   { key: 'all', label: 'All' },
-  { key: 'featured', label: 'Featured' },
   { key: 'frontend', label: 'Frontend' },
   { key: 'backend', label: 'Backend' },
-  { key: 'tools', label: 'Tools' },
-  { key: 'uni', label: 'Uni Projects' },
 ]
 
 // ── Project Card ──────────────────────────────────────────────
@@ -219,39 +139,43 @@ function ProjectCard({ project, index, inView }) {
             {project.desc}
           </p>
           <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              style={{
-                flex: 1, textAlign: 'center',
-                background: project.color,
-                color: ['#4ADE80', '#6EE7B7'].includes(project.color) ? '#0F1117' : '#fff',
-                fontSize: '11px', fontWeight: 700,
-                padding: '8px', borderRadius: '5px',
-                textDecoration: 'none',
-              }}
-            >
-              Live Preview →
-            </a>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              style={{
-                flex: 1, textAlign: 'center',
-                background: 'transparent',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: '#E8E6F0',
-                fontSize: '11px',
-                padding: '8px', borderRadius: '5px',
-                textDecoration: 'none',
-              }}
-            >
-              GitHub ↗
-            </a>
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                style={{
+                  flex: 1, textAlign: 'center',
+                  background: project.color,
+                  color: ['#4ADE80', '#6EE7B7'].includes(project.color) ? '#0F1117' : '#fff',
+                  fontSize: '11px', fontWeight: 700,
+                  padding: '8px', borderRadius: '5px',
+                  textDecoration: 'none',
+                }}
+              >
+                Live Preview →
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                style={{
+                  flex: 1, textAlign: 'center',
+                  background: 'transparent',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#E8E6F0',
+                  fontSize: '11px',
+                  padding: '8px', borderRadius: '5px',
+                  textDecoration: 'none',
+                }}
+              >
+                GitHub ↗
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -283,154 +207,9 @@ function ProjectCard({ project, index, inView }) {
   )
 }
 
-// ── GitHub Extra Repos ────────────────────────────────────────
-function GitHubProjects({ shown }) {
-  const [repos, setRepos] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (!shown) return
-    fetch('https://api.github.com/users/kiranShamsHere/repos?per_page=100&sort=updated')
-      .then(r => r.json())
-      .then(data => {
-        const featuredNames = featuredProjects.map(p => p.name.toLowerCase())
-        const withPreview = data
-          .filter(r =>
-            r.homepage &&
-            r.homepage.trim() !== '' &&
-            !featuredNames.includes(r.name.toLowerCase())
-          )
-          .slice(0, 9)
-        setRepos(withPreview)
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
-  }, [shown])
-
-  if (!shown) return null
-
-  return (
-    <div style={{ marginTop: '40px', borderTop: '1px solid var(--border)', paddingTop: '32px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-        <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
-          More from GitHub
-        </h3>
-        <span style={{
-          fontSize: '10px', color: 'var(--accent)',
-          fontFamily: '"Courier New", monospace',
-          background: 'var(--bg-surface)',
-          border: '1px solid var(--border)',
-          padding: '2px 8px', borderRadius: '10px',
-        }}>
-          live projects only
-        </span>
-      </div>
-
-      {loading ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '12px' }}>
-          {[1,2,3].map(i => (
-            <div key={i} style={{
-              height: '180px', background: 'var(--bg-surface)',
-              borderRadius: '10px', border: '1px solid var(--border)',
-              animation: 'shimmer 1.5s infinite',
-            }} />
-          ))}
-        </div>
-      ) : repos.length === 0 ? (
-        <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-          No additional live projects found on GitHub.
-        </p>
-      ) : (
-        <div className="github-grid">
-          {repos.map(repo => (
-            <GitHubCard key={repo.id} repo={repo} />
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
-function GitHubCard({ repo }) {
-  const [hovered, setHovered] = useState(false)
-  const [imgLoaded, setImgLoaded] = useState(false)
-  const screenshotUrl = getScreenshot(repo.homepage)
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: 'var(--bg-surface)',
-        border: `1px solid ${hovered ? 'var(--accent)' : 'var(--border)'}`,
-        borderRadius: '10px', overflow: 'hidden',
-        transition: 'all 0.2s',
-        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 8px 24px rgba(110,231,183,0.1)' : 'none',
-      }}
-    >
-      <div style={{
-        width: '100%', aspectRatio: '16/9',
-        background: 'var(--bg-surface-2)', overflow: 'hidden',
-        position: 'relative',
-      }}>
-        {!imgLoaded && (
-          <div style={{
-            position: 'absolute', inset: 0,
-            animation: 'shimmer 1.5s infinite',
-            background: 'linear-gradient(90deg,var(--bg-surface-2) 25%,var(--bg-surface) 50%,var(--bg-surface-2) 75%)',
-            backgroundSize: '200% 100%',
-          }} />
-        )}
-        <img
-          src={screenshotUrl}
-          alt={repo.name}
-          style={{
-            width: '100%', height: '100%',
-            objectFit: 'cover', display: 'block',
-            opacity: imgLoaded ? 1 : 0,
-            transition: 'opacity 0.3s, transform 0.4s',
-            transform: hovered ? 'scale(1.04)' : 'scale(1)',
-          }}
-          onLoad={() => setImgLoaded(true)}
-          onError={e => {
-            e.target.style.display = 'none'
-            e.target.parentElement.innerHTML += `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;">🌐</div>`
-          }}
-        />
-      </div>
-      <div style={{ padding: '12px' }}>
-        <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text)', marginBottom: '4px' }}>
-          {repo.name.replace(/-/g, ' ')}
-        </div>
-        {repo.description && (
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '10px' }}>
-            {repo.description.slice(0, 70)}{repo.description.length > 70 ? '...' : ''}
-          </div>
-        )}
-        <div style={{ display: 'flex', gap: '6px' }}>
-          <a href={repo.homepage} target="_blank" rel="noopener noreferrer" style={{
-            flex: 1, textAlign: 'center',
-            background: 'var(--accent)', color: 'var(--bg)',
-            fontSize: '10px', fontWeight: 700,
-            padding: '6px', borderRadius: '4px', textDecoration: 'none',
-          }}>Live →</a>
-          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" style={{
-            flex: 1, textAlign: 'center',
-            background: 'transparent', border: '1px solid var(--border)',
-            color: 'var(--text-muted)',
-            fontSize: '10px', padding: '6px', borderRadius: '4px', textDecoration: 'none',
-          }}>Code ↗</a>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 // ── Main Section ──────────────────────────────────────────────
 export default function Projects() {
   const [activeTab, setActiveTab] = useState('all')
-  const [showGitHub, setShowGitHub] = useState(false)
   const [inView, setInView] = useState(false)
   const sectionRef = useRef(null)
 
@@ -472,7 +251,7 @@ export default function Projects() {
               My Projects
             </h2>
             <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: 0 }}>
-              Things I've built — from web apps to AI tools
+              Things I've built — from web apps to tools
             </p>
           </div>
           <a
@@ -490,7 +269,7 @@ export default function Projects() {
             onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
             onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
           >
-            github.com/ZainabAamiHere →
+            github.com/Zainab-Aamir-Khan →
           </a>
         </div>
 
@@ -555,58 +334,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Explore More button */}
-        <div style={{
-          textAlign: 'center', marginTop: '40px',
-          opacity: inView ? 1 : 0,
-          transition: 'opacity 0.6s ease 0.5s',
-        }}>
-          {!showGitHub ? (
-            <button
-              onClick={() => setShowGitHub(true)}
-              style={{
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border)',
-                color: 'var(--text)',
-                padding: '12px 36px',
-                borderRadius: '8px',
-                fontSize: '13px', fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'inline-flex',
-                alignItems: 'center', gap: '8px',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.color = 'var(--accent)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.color = 'var(--text)'
-              }}
-            >
-              Explore More Projects ↓
-            </button>
-          ) : (
-            <button
-              onClick={() => setShowGitHub(false)}
-              style={{
-                background: 'transparent',
-                border: '1px solid var(--border)',
-                color: 'var(--text-muted)',
-                padding: '10px 28px',
-                borderRadius: '8px',
-                fontSize: '12px', cursor: 'pointer',
-              }}
-            >
-              Show Less ↑
-            </button>
-          )}
-        </div>
-
-        {/* Live GitHub repos */}
-        <GitHubProjects shown={showGitHub} />
-
       </div>
 
       <style>{`
@@ -618,18 +345,13 @@ export default function Projects() {
         .projects-grid {
           grid-template-columns: repeat(3, 1fr);
         }
-        .github-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-        }
         @media (max-width: 900px) {
-          .projects-grid, .github-grid {
+          .projects-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }
         @media (max-width: 560px) {
-          .projects-grid, .github-grid {
+          .projects-grid {
             grid-template-columns: 1fr !important;
           }
         }
