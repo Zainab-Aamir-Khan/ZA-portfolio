@@ -1,249 +1,44 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const experiences = [
   {
-    company: 'AgriClima AI Consultant',
-    period: 'Dec 2025 — Present',
-    role: 'Founder & CEO',
-    location: 'Hyderabad, Sindh · Self-employed',
-    desc: 'Founded AgriClima AI to bring intelligent crop advisory and climate insights to farmers in Sindh. Using AI & data science to transform agriculture and strengthen climate resilience.',
-    active: true,
-    color: 'var(--accent)',
-    colorHex: '#6EE7B7',
-    tags: ['AgriTech', 'Climate AI', 'Founding'],
+    company: 'Digital Experts Dev',
+    role: 'Web Application Developer',
+    employmentType: 'Full-time',
+    period: 'Mar 2025 — Present',
+    duration: '1 yr 6 mos',
+    location: 'Karāchi, Sindh, Pakistan • Remote',
+    description: 'Developing responsive web applications and interactive client solutions using modern frontend technologies and frameworks.',
+    tags: ['Web Application Development', 'Web Projects', 'Frontend Architecture'],
+    status: 'Active',
+    statusColor: '#10B981', // Green dot
   },
   {
-    company: 'Hoopo Canada',
-    period: 'Aug 2025 — Present',
-    role: 'CNV Ambassador & Tech Innovator',
-    location: 'Canada · Remote',
-    desc: 'Building digital tools for Carbon Neutral Villages and sustainability systems. SMART computer systems supporting AI-driven decision making for rural communities.',
-    active: true,
-    color: 'var(--accent-2)',
-    colorHex: '#818CF8',
-    tags: ['Climate Tech', 'CNV', 'Remote'],
+    company: 'Potentials Dev+',
+    role: 'Frontend Developer',
+    employmentType: 'Full-time',
+    period: 'Feb 2024 — Feb 2025',
+    duration: '1 yr 1 mo',
+    location: 'Karāchi, Sindh, Pakistan • On-site',
+    description: 'Built scalable user interfaces and modular web components using React.js and the MERN stack ecosystem.',
+    tags: ['React.js', 'MERN Stack', 'Tailwind CSS', 'REST APIs'],
+    status: 'Completed',
+    statusColor: '#8B5CF6', // Purple dot
   },
   {
-    company: 'CodePro Software & Web Services',
-    period: 'Jun 2024 — Jul 2024',
-    role: 'Frontend Developer Intern',
-    location: 'Hyderabad · On-site',
-    desc: 'Worked on responsive web interfaces using HTML, CSS, Bootstrap and JavaScript. Collaborated with senior developers on real client projects.',
-    active: false,
-    color: 'var(--text-muted)',
-    colorHex: '#9896A8',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-  },
-  {
-    company: 'TIME — Institute of Management & Entrepreneurship',
-    period: 'Feb 2024 — May 2024',
-    role: 'Web Developer',
-    location: 'Hyderabad · On-site',
-    desc: 'Built digital projects and student-facing web solutions. Web development and tech demo lead for institutional and entrepreneurship initiatives.',
-    active: false,
-    color: 'var(--text-muted)',
-    colorHex: '#9896A8',
-    tags: ['Web Dev', 'Education'],
+    company: 'Checkmate Digital',
+    role: 'Web Content Writer',
+    employmentType: 'Part-time',
+    period: 'Aug 2023 — Jan 2024',
+    duration: '6 mos',
+    location: 'Karāchi, Sindh, Pakistan • Remote',
+    description: 'Authored structured web content, technical documentation, and optimized digital assets for client platforms.',
+    tags: ['Web Content Writing', 'Content Creation', 'SEO'],
+    status: 'Completed',
+    statusColor: '#6B7280', // Gray hollow dot
   },
 ]
-
-function ExperienceCard({ exp, index, inView }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <div style={{
-      display: 'flex',
-      gap: '0',
-      opacity: inView ? 1 : 0,
-      transform: inView ? 'translateY(0)' : 'translateY(24px)',
-      transition: `opacity 0.7s ease ${index * 0.15}s, transform 0.7s ease ${index * 0.15}s`,
-    }}>
-
-      {/* Timeline column */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginRight: '24px',
-        flexShrink: 0,
-      }}>
-        {/* Dot */}
-        <div style={{
-          width: '14px',
-          height: '14px',
-          borderRadius: '50%',
-          background: exp.active ? exp.colorHex : 'var(--bg-surface)',
-          border: `2px solid ${exp.colorHex}`,
-          boxShadow: exp.active ? `0 0 10px ${exp.colorHex}80` : 'none',
-          flexShrink: 0,
-          marginTop: '4px',
-          transition: 'box-shadow 0.3s',
-          animation: exp.active ? 'dotPulse 2s infinite' : 'none',
-          zIndex: 1,
-        }} />
-        {/* Vertical line */}
-        {index < experiences.length - 1 && (
-          <div style={{
-            width: '1px',
-            flex: 1,
-            background: `linear-gradient(180deg, ${exp.colorHex}60, var(--border))`,
-            marginTop: '8px',
-            minHeight: '32px',
-          }} />
-        )}
-      </div>
-
-      {/* Card */}
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{
-          flex: 1,
-          background: hovered ? 'var(--bg-surface)' : 'var(--bg-surface)',
-          border: `1px solid ${hovered ? exp.colorHex + '60' : 'var(--border)'}`,
-          borderRadius: '10px',
-          padding: '20px 24px',
-          marginBottom: index < experiences.length - 1 ? '16px' : '0',
-          transition: 'border-color 0.2s, transform 0.2s',
-          transform: hovered ? 'translateX(4px)' : 'translateX(0)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Top accent line on hover */}
-        <div style={{
-          position: 'absolute',
-          top: 0, left: 0, right: 0,
-          height: '2px',
-          background: `linear-gradient(90deg, ${exp.colorHex}, transparent)`,
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.3s',
-        }} />
-
-        {/* Header row */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          marginBottom: '6px',
-          flexWrap: 'wrap',
-          gap: '8px',
-        }}>
-          <h3 style={{
-            fontSize: '15px',
-            fontWeight: 700,
-            color: hovered ? exp.colorHex : 'var(--text)',
-            margin: 0,
-            transition: 'color 0.2s',
-            lineHeight: 1.3,
-          }}>
-            {exp.company}
-          </h3>
-          <span style={{
-            fontSize: '11px',
-            color: 'var(--text-muted)',
-            fontFamily: '"Courier New", monospace',
-            flexShrink: 0,
-          }}>
-            {exp.period}
-          </span>
-        </div>
-
-        {/* Role */}
-        <div style={{
-          fontSize: '13px',
-          fontWeight: 600,
-          color: exp.colorHex,
-          marginBottom: '4px',
-        }}>
-          {exp.role}
-        </div>
-
-        {/* Location */}
-        <div style={{
-          fontSize: '11px',
-          color: 'var(--text-muted)',
-          marginBottom: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
-        }}>
-          <span style={{
-            display: 'inline-block',
-            width: '4px',
-            height: '4px',
-            borderRadius: '50%',
-            background: 'var(--text-muted)',
-          }} />
-          {exp.location}
-        </div>
-
-        {/* Description */}
-        <p style={{
-          fontSize: '12px',
-          color: 'var(--text-muted)',
-          lineHeight: 1.8,
-          margin: '0 0 14px',
-        }}>
-          {exp.desc}
-        </p>
-
-        {/* Bottom row: tags + active badge */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '8px',
-        }}>
-          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-            {exp.tags.map(tag => (
-              <span key={tag} style={{
-                fontSize: '9px',
-                background: 'var(--bg-surface-2)',
-                border: '1px solid var(--border)',
-                color: 'var(--text-muted)',
-                padding: '2px 8px',
-                borderRadius: '3px',
-                fontFamily: '"Courier New", monospace',
-              }}>
-                {tag}
-              </span>
-            ))}
-          </div>
-          {exp.active && (
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '5px',
-              background: `${exp.colorHex}15`,
-              border: `1px solid ${exp.colorHex}40`,
-              borderRadius: '20px',
-              padding: '3px 12px',
-            }}>
-              <span style={{
-                width: 5, height: 5,
-                borderRadius: '50%',
-                background: exp.colorHex,
-                display: 'inline-block',
-                animation: 'activePulse 2s infinite',
-              }} />
-              <span style={{
-                fontSize: '9px',
-                color: exp.colorHex,
-                fontWeight: 700,
-                letterSpacing: '0.05em',
-              }}>
-                Active
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function Experience() {
   const [inView, setInView] = useState(false)
@@ -259,100 +54,115 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" ref={sectionRef} style={{ padding: '5rem 2rem' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+    <section id="experience" ref={sectionRef} style={{ padding: '6rem 2rem', background: '#090D16', color: '#FDFBF7' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          marginBottom: '48px',
-          flexWrap: 'wrap',
-          gap: '16px',
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
-        }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <h2 style={{
-              fontFamily: 'var(--font-display, Syne), sans-serif',
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: 800,
-              color: 'var(--text)',
-              margin: '0 0 6px',
-              letterSpacing: '-0.04em',
-            }}>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, margin: 0, letterSpacing: '-0.03em', fontFamily: 'sans-serif' }}>
               Experience
             </h2>
-            <p style={{
-              fontSize: '12px',
-              color: 'var(--text-muted)',
-              margin: 0,
-              background: 'var(--bg-surface-2)',
-              border: '1px solid var(--border)',
-              display: 'inline-block',
-              padding: '4px 12px',
-              borderRadius: '6px',
-              // fontStyle: 'italic',
-
-            }}>
-              From intern to founder in under 2 years.
-            </p>
+            <div style={{ display: 'inline-block', marginTop: '0.5rem', background: '#131B2E', border: '1px solid #242F47', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', color: '#94A3B8' }}>
+              Building modern web experiences
+            </div>
           </div>
-          <a
-            href="https://www.linkedin.com/in/zainab-aamir-31b6b91ba/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: '11px',
-              color: 'var(--accent)',
-              textDecoration: 'none',
-              fontFamily: '"Courier New", monospace',
-              letterSpacing: '0.05em',
-              border: '1px solid var(--border)',
-              padding: '6px 14px',
-              borderRadius: '6px',
-              transition: 'border-color 0.2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
-            onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+
+          <a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noreferrer"
+            style={{ color: '#10B981', fontSize: '13px', fontFamily: 'monospace', textDecoration: 'none', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '6px 14px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.05)' }}
           >
-            LinkedIn Profile →
+            LinkedIn Profile ↗
           </a>
         </div>
 
-        {/* Timeline */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {experiences.map((exp, i) => (
-            <ExperienceCard
-              key={exp.company}
-              exp={exp}
-              index={i}
-              inView={inView}
-            />
-          ))}
+        {/* Timeline Container */}
+        <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+          
+          {/* Vertical Connecting Line */}
+          <div style={{ position: 'absolute', left: '7px', top: '12px', bottom: '12px', width: '2px', background: '#242F47' }} />
+
+          {/* Cards List */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {experiences.map((exp, index) => (
+              <div key={exp.company + index} style={{ position: 'relative' }}>
+                
+                {/* Timeline Dot */}
+                <div style={{
+                  position: 'absolute',
+                  left: '-2rem',
+                  top: '24px',
+                  transform: 'translateX(-50%)',
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  background: exp.status === 'Active' ? exp.statusColor : '#090D16',
+                  border: `2px solid ${exp.statusColor}`,
+                  boxShadow: exp.status === 'Active' ? `0 0 10px ${exp.statusColor}` : 'none',
+                  zIndex: 2,
+                }} />
+
+                {/* Card Outer */}
+                <div style={{
+                  background: '#111726',
+                  border: '1px solid #1E293B',
+                  borderRadius: '12px',
+                  padding: '1.5rem 1.8rem',
+                  transition: 'border-color 0.2s',
+                }}>
+                  
+                  {/* Company & Date */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#FDFBF7' }}>
+                      {exp.company}
+                    </h3>
+                    <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#64748B' }}>
+                      {exp.period}
+                    </span>
+                  </div>
+
+                  {/* Role Title */}
+                  <div style={{ color: '#10B981', fontWeight: 700, fontSize: '0.95rem', marginTop: '4px' }}>
+                    {exp.role} <span style={{ color: '#64748B', fontWeight: 400 }}>({exp.employmentType})</span>
+                  </div>
+
+                  {/* Location & Duration */}
+                  <div style={{ fontSize: '12px', color: '#64748B', marginTop: '4px', marginBottom: '12px' }}>
+                    • {exp.location} <span style={{ opacity: 0.6 }}>({exp.duration})</span>
+                  </div>
+
+                  {/* Description */}
+                  <p style={{ fontSize: '0.88rem', color: '#94A3B8', lineHeight: 1.6, margin: '0 0 1rem' }}>
+                    {exp.description}
+                  </p>
+
+                  {/* Tags & Status Footer */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      {exp.tags.map(tag => (
+                        <span key={tag} style={{ background: '#1E293B', color: '#94A3B8', fontSize: '11px', padding: '3px 8px', borderRadius: '4px', border: '1px solid #334155' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {exp.status === 'Active' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '2px 10px', borderRadius: '12px', fontSize: '11px', fontWeight: 600 }}>
+                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
+                        Active
+                      </span>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
-
-      <style>{`
-        @keyframes activePulse {
-          0%, 100% { opacity: 1; box-shadow: 0 0 4px currentColor; }
-          50% { opacity: 0.6; box-shadow: 0 0 10px currentColor; }
-        }
-        @keyframes dotPulse {
-          0%, 100% { box-shadow: 0 0 10px var(--c, #6EE7B7); }
-          50% { box-shadow: 0 0 20px var(--c, #6EE7B7); }
-        }
-        @media (max-width: 640px) {
-          #experience h2 {
-            font-size: 2rem !important;
-          }
-          #experience div[style*="margin-right: 24px"] {
-            margin-right: 16px !important;
-          }
-        }
-      `}</style>
     </section>
   )
 }

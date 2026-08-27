@@ -1,284 +1,198 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
 
-const degrees = [
+const educationData = [
   {
-    level: 'UNIVERSITY',
-    degree: 'BS Computer Science',
-    institution: 'University of Karachi',
+    category: 'UNIVERSITY',
+    statusTag: 'Completed',
+    title: "Bachelor's Computer Technology",
+    subtitle: 'Computer Systems Technology',
+    institution: 'Karachi University',
     location: 'Karachi, Sindh',
-    period: 'Jan 2022 — 2025',
-    active: true,
-    color: '#6EE7B7',
-    size: 'large',
-    // Decorative: abstract lines pattern
-    pattern: 'university',
+    period: 'Jan 2022 — Dec 2025',
+    grade: 'GPA 3.6 / 4',
+    accentColor: '#10B981', // Green accent
+    badgeActive: true,
   },
   {
-    level: 'COLLEGE',
-    degree: 'Intermediate',
-    institution: 'Govt. Degree College', // Update with your college name
+    category: 'COLLEGE',
+    statusTag: 'Completed',
+    title: 'Intermediate',
+    subtitle: 'Pre-Medicine / Pre-Medical Studies',
+    institution: 'Board of Secondary Education, Karachi',
     location: 'Karachi, Sindh',
-    period: 'Completed',
-    active: false,
-    color: '#818CF8',
-    size: 'small',
-    pattern: 'college',
+    period: 'Jan 2018 — Dec 2020',
+    grade: 'Grade: A',
+    accentColor: '#8B5CF6', // Purple accent
+    badgeActive: false,
   },
   {
-    level: 'SCHOOL',
-    degree: 'Matriculation',
-    institution: 'Your High School Name', // Update with your high school name
+    category: 'SCHOOL',
+    statusTag: 'Completed',
+    title: 'Matriculation',
+    subtitle: 'Biology, General',
+    institution: 'Board of Secondary Education, Karachi',
     location: 'Karachi, Sindh',
-    period: 'Completed',
-    active: false,
-    color: '#9896A8',
-    size: 'small',
-    pattern: 'school',
+    period: 'Jan 2016 — Dec 2017',
+    grade: 'Grade: A+',
+    accentColor: '#64748B', // Muted accent
+    badgeActive: false,
   },
 ]
 
-// SVG decorative patterns — abstract, no emojis
-const PatternUniversity = () => (
-  <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-    <circle cx="40" cy="40" r="35" stroke="#6EE7B730" strokeWidth="1"/>
-    <circle cx="40" cy="40" r="24" stroke="#6EE7B750" strokeWidth="1"/>
-    <circle cx="40" cy="40" r="12" stroke="#6EE7B770" strokeWidth="1.5"/>
-    <circle cx="40" cy="40" r="4" fill="#6EE7B7"/>
-    <line x1="40" y1="5" x2="40" y2="20" stroke="#6EE7B760" strokeWidth="1"/>
-    <line x1="40" y1="60" x2="40" y2="75" stroke="#6EE7B760" strokeWidth="1"/>
-    <line x1="5" y1="40" x2="20" y2="40" stroke="#6EE7B760" strokeWidth="1"/>
-    <line x1="60" y1="40" x2="75" y2="40" stroke="#6EE7B760" strokeWidth="1"/>
-  </svg>
-)
-
-const PatternCollege = () => (
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <rect x="8" y="8" width="44" height="44" rx="4" stroke="#818CF830" strokeWidth="1"/>
-    <rect x="16" y="16" width="28" height="28" rx="3" stroke="#818CF850" strokeWidth="1"/>
-    <rect x="24" y="24" width="12" height="12" rx="2" fill="#818CF830" stroke="#818CF870" strokeWidth="1.5"/>
-    <circle cx="30" cy="30" r="3" fill="#818CF8"/>
-  </svg>
-)
-
-const PatternSchool = () => (
-  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-    <polygon points="30,8 52,22 52,38 30,52 8,38 8,22" stroke="#9896A830" strokeWidth="1" fill="none"/>
-    <polygon points="30,16 44,24 44,36 30,44 16,36 16,24" stroke="#9896A850" strokeWidth="1" fill="none"/>
-    <circle cx="30" cy="30" r="5" fill="#9896A840" stroke="#9896A8" strokeWidth="1.5"/>
-  </svg>
-)
-
-function EducationCard({ deg, index, inView }) {
-  const [hovered, setHovered] = useState(false)
-  const isLarge = deg.size === 'large'
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        position: 'relative',
-        background: 'var(--bg-surface)',
-        border: `1px solid ${hovered ? deg.color : 'var(--border)'}`,
-        borderRadius: '14px',
-        padding: isLarge ? '28px' : '22px',
-        overflow: 'hidden',
-        transition: 'all 0.3s ease',
-        transform: inView
-          ? hovered ? 'translateY(-5px)' : 'translateY(0)'
-          : 'translateY(30px)',
-        opacity: inView ? 1 : 0,
-        transitionDelay: `${index * 0.12}s`,
-        boxShadow: hovered ? `0 16px 40px ${deg.color}18` : 'none',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        minHeight: isLarge ? '220px' : '180px',
-      }}
-    >
-      {/* Top accent line */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0,
-        height: '2px',
-        background: `linear-gradient(90deg, ${deg.color}, transparent)`,
-        opacity: hovered ? 1 : 0.4,
-        transition: 'opacity 0.3s',
-      }} />
-
-      {/* Background pattern — top right corner */}
-      <div style={{
-        position: 'absolute',
-        top: isLarge ? '20px' : '14px',
-        right: isLarge ? '20px' : '14px',
-        opacity: hovered ? 0.7 : 0.3,
-        transition: 'opacity 0.3s',
-      }}>
-        {deg.pattern === 'university' && <PatternUniversity />}
-        {deg.pattern === 'college' && <PatternCollege />}
-        {deg.pattern === 'school' && <PatternSchool />}
-      </div>
-
-      {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        {/* Level label */}
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: '8px',
-          marginBottom: isLarge ? '20px' : '14px',
-        }}>
-          <span style={{
-            fontSize: '9px',
-            fontFamily: '"Courier New", monospace',
-            letterSpacing: '0.12em',
-            color: deg.color,
-            fontWeight: 600,
-          }}>
-            {deg.level}
-          </span>
-          {deg.active && (
-            <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: '4px',
-              background: `${deg.color}18`,
-              border: `1px solid ${deg.color}40`,
-              borderRadius: '20px',
-              padding: '2px 8px',
-            }}>
-              <span style={{
-                width: 5, height: 5, borderRadius: '50%',
-                background: deg.color, display: 'inline-block',
-                marginRight: '3px',
-                animation: 'activeDot 2s infinite',
-              }} />
-              <span style={{ fontSize: '9px', color: deg.color, fontWeight: 600 }}>
-                Enrolled
-              </span>
-            </span>
-          )}
-        </div>
-
-        {/* Degree name */}
-        <h3 style={{
-          fontFamily: 'var(--font-display, Syne), sans-serif',
-          fontSize: isLarge ? '1.4rem' : '1.1rem',
-          fontWeight: 800,
-          color: hovered ? 'var(--text)' : 'var(--text)',
-          margin: '0 0 6px',
-          letterSpacing: '-0.02em',
-          lineHeight: 1.2,
-          maxWidth: '70%',
-        }}>
-          {deg.degree}
-        </h3>
-
-        {/* Institution */}
-        <div style={{
-          fontSize: isLarge ? '13px' : '12px',
-          color: deg.color,
-          fontWeight: 600,
-          marginBottom: '4px',
-          transition: 'color 0.2s',
-        }}>
-          {deg.institution}
-        </div>
-      </div>
-
-      {/* Bottom: location + period */}
-      <div style={{
-        position: 'relative', zIndex: 1,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        marginTop: '16px',
-        paddingTop: '12px',
-        borderTop: `1px solid ${hovered ? deg.color + '30' : 'var(--border)'}`,
-        transition: 'border-color 0.3s',
-      }}>
-        <span style={{
-          fontSize: '11px',
-          color: 'var(--text-muted)',
-        }}>
-          {deg.location}
-        </span>
-        <span style={{
-          fontSize: '10px',
-          color: deg.active ? deg.color : 'var(--text-muted)',
-          fontFamily: '"Courier New", monospace',
-          letterSpacing: '0.04em',
-        }}>
-          {deg.period}
-        </span>
-      </div>
-    </div>
-  )
-}
-
 export default function Education() {
-  const [inView, setInView] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true) },
-      { threshold: 0.15 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section id="education" ref={sectionRef} style={{ padding: '5rem 2rem' }}>
+    <section id="education" style={{ padding: '6rem 2rem', background: '#090D16', color: '#FDFBF7' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-        {/* Heading */}
-        <div style={{
-          marginBottom: '36px',
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
-        }}>
+        {/* ── Section Title ── */}
+        <div style={{ marginBottom: '2.5rem' }}>
           <h2 style={{
-            fontFamily: 'var(--font-display, Syne), sans-serif',         
-            fontSize: 'clamp(2rem, 5vw, 3.2rem)',
-            fontWeight: 900,
-            color: 'var(--text)',
-            margin: '0 0 6px',
-            letterSpacing: '-0.04em',
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: 800,
+            margin: 0,
+            letterSpacing: '-0.03em',
+            fontFamily: 'sans-serif',
           }}>
             Education
           </h2>
-          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: 0 }}>
+          <p style={{
+            margin: '0.5rem 0 0',
+            fontSize: '0.9rem',
+            color: '#64748B',
+            fontFamily: 'monospace',
+          }}>
             From school to university — building the foundation.
           </p>
         </div>
 
-        {/* Cards grid — large + 2 small */}
-        <div className="edu-grid">
-          {degrees.map((deg, i) => (
-            <EducationCard
-              key={deg.degree}
-              deg={deg}
-              index={i}
-              inView={inView}
-            />
+        {/* ── Cards Grid ── */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '1.5rem',
+        }}>
+          {educationData.map((edu, index) => (
+            <div
+              key={index}
+              style={{
+                background: '#111726',
+                border: '1px solid #1E293B',
+                borderRadius: '16px',
+                padding: '1.8rem',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'border-color 0.25s ease, transform 0.25s ease',
+              }}
+              className="education-card"
+            >
+              {/* Card Header & Badge */}
+              <div>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: '1.25rem',
+                }}>
+                  <span style={{
+                    fontSize: '11px',
+                    fontFamily: 'monospace',
+                    letterSpacing: '0.15em',
+                    fontWeight: 700,
+                    color: edu.accentColor,
+                  }}>
+                    {edu.category}
+                  </span>
+
+                  {edu.statusTag && (
+                    <span style={{
+                      fontSize: '11px',
+                      padding: '2px 10px',
+                      borderRadius: '12px',
+                      background: edu.badgeActive ? 'rgba(16, 185, 129, 0.12)' : '#1E293B',
+                      color: edu.badgeActive ? '#10B981' : '#94A3B8',
+                      border: `1px solid ${edu.badgeActive ? 'rgba(16, 185, 129, 0.3)' : '#334155'}`,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                    }}>
+                      {edu.badgeActive && (
+                        <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10B981' }} />
+                      )}
+                      {edu.statusTag}
+                    </span>
+                  )}
+                </div>
+
+                {/* Degree Title */}
+                <h3 style={{
+                  fontSize: '1.35rem',
+                  fontWeight: 800,
+                  margin: '0 0 4px',
+                  color: '#FDFBF7',
+                  lineHeight: 1.25,
+                }}>
+                  {edu.title}
+                </h3>
+
+                {/* Major / Field */}
+                <div style={{ fontSize: '0.82rem', color: '#94A3B8', marginBottom: '8px' }}>
+                  {edu.subtitle}
+                </div>
+
+                {/* Institution */}
+                <div style={{
+                  fontSize: '0.92rem',
+                  fontWeight: 600,
+                  color: edu.accentColor,
+                  marginBottom: '12px',
+                }}>
+                  {edu.institution}
+                </div>
+              </div>
+
+              {/* Card Footer Info */}
+              <div style={{
+                marginTop: '1.5rem',
+                paddingTop: '1rem',
+                borderTop: '1px solid #1E293B',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  fontSize: '12px',
+                  fontFamily: 'monospace',
+                  color: '#64748B',
+                }}>
+                  <span>{edu.location}</span>
+                  <span>{edu.period}</span>
+                </div>
+
+                <div style={{
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  color: '#10B981',
+                  textAlign: 'right',
+                }}>
+                  {edu.grade}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
       </div>
 
       <style>{`
-        @keyframes activeDot {
-          0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
-          50% { opacity: 0.5; box-shadow: 0 0 10px currentColor; }
-        }
-        .edu-grid {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr 1fr;
-          gap: 14px;
-        }
-        @media (max-width: 768px) {
-          .edu-grid {
-            grid-template-columns: 1fr !important;
-          }
+        .education-card:hover {
+          border-color: #334155 !important;
+          transform: translateY(-2px);
         }
       `}</style>
     </section>

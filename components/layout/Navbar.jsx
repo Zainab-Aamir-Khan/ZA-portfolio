@@ -10,16 +10,16 @@ const navLinks = [
   { label: 'Projects',   href: '#projects',   desktopHide: false },
   { label: 'Education',  href: '#education',  desktopHide: false },
   { label: 'Services',   href: '#services',   desktopHide: false },
-  { label: 'Blog',       href: '#blog',       desktopHide: false },
   { label: 'Contact',    href: '#contact',    desktopHide: false },
 ]
 
 export default function Navbar() {
-  const [theme, setTheme]           = useState('light')
+  // Default to dark mode state
+  const [theme, setTheme]           = useState('dark')
   const [scrolled, setScrolled]     = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  // Sync state and html attribute
+  // Sync state with HTML data attributes and Tailwind dark class
   const applyTheme = (newTheme) => {
     setTheme(newTheme)
     document.documentElement.setAttribute('data-theme', newTheme)
@@ -30,16 +30,14 @@ export default function Navbar() {
     }
   }
 
-  // Detect system theme preference on mount
+  // Load theme on mount: default to dark unless saved as light
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initialTheme = prefersDark ? 'dark' : 'light'
-    applyTheme(initialTheme)
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = (e) => applyTheme(e.matches ? 'dark' : 'light')
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme) {
+      applyTheme(savedTheme)
+    } else {
+      applyTheme('dark')
+    }
   }, [])
 
   useEffect(() => {
@@ -62,6 +60,7 @@ export default function Navbar() {
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('theme', next)
     applyTheme(next)
   }
 
@@ -76,7 +75,7 @@ export default function Navbar() {
     : '1px solid transparent'
   const textColor = isDark ? '#FDFBF7' : '#0F172A'
   const textMuted = isDark ? '#94A3B8' : '#334155'
-  const accentColor = isDark ? '#E5C158' : '#D4AF37'
+  const accentColor = '#1E9E75' // Teal/Green accent color
   const cardBg = isDark ? '#131B2E' : '#F5F0EB'
   const borderSubtle = isDark ? '#242F47' : '#E2D8CE'
 
@@ -143,8 +142,8 @@ export default function Navbar() {
 
           {/* Hire Me */}
           <a href="#contact" style={{
-            background: isDark ? accentColor : textColor,
-            color: isDark ? '#1E9E75' : '#FDFBF7',
+            background: accentColor,
+            color: '#FFFFFF',
             padding: '8px 18px', borderRadius: '6px',
             textDecoration: 'none', fontSize: '13px', fontWeight: 700,
             whiteSpace: 'nowrap', transition: 'opacity 0.2s',
@@ -250,11 +249,11 @@ export default function Navbar() {
             border: `1px solid ${borderSubtle}`, borderRadius: '8px',
             padding: '10px 14px', cursor: 'pointer', color: textColor,
             fontSize: '13px', display: 'flex', alignItems: 'center',
-            justify: 'space-between', transition: 'border-color 0.2s',
+            justifyContent: 'space-between', transition: 'border-color 0.2s',
           }}>
-            <span>{isDark ? '☀️  Switch to Light' : '🌙  Switch to Dark'}</span>
+            <span>{isDark ? '☀️ Switch to Light' : '🌙 Switch to Dark'}</span>
             <span style={{
-              background: accentColor, color: '#0F172A',
+              background: accentColor, color: '#FFFFFF',
               fontSize: '10px', fontWeight: 800,
               padding: '2px 8px', borderRadius: '4px', letterSpacing: '0.05em',
             }}>
