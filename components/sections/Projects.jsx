@@ -24,8 +24,8 @@ const featuredProjects = [
     title: 'Student Management System',
     desc: 'Full SMS designed using HTML, CSS, JS and React.',
     image: '/images/projects/p2.png', // Add your image path here
-     live: '',
-     github: '',
+     live: 'https://sms-pi-seven.vercel.app/login',
+     github: 'https://github.com/Zainab-Aamir-Khan/SMS',
     tags: ['HTML', 'CSS', 'JavaScript'],
     color: '#4ADE80',
     cat: ['all', 'featured', 'frontend'],
