@@ -76,7 +76,7 @@ export default function About() {
         {/* Section label */}
         <div style={{
           fontSize: '11px', color: 'var(--text-muted)',
-          fontFamily: '"Courier New", monospace',
+          fontFamily: 'var(--font-body, DM Sans), sans-serif',
           letterSpacing: '0.15em', textTransform: 'uppercase',
           paddingTop: '0.6rem',
           marginBottom: '1.3rem',
@@ -198,7 +198,7 @@ export default function About() {
                   border: `1px solid ${i % 2 === 0 ? 'var(--accent)' : 'var(--accent-2)'}`,
                   color: i % 2 === 0 ? 'var(--accent)' : 'var(--accent-2)',
                   fontSize: '10px', padding: '3px 10px', borderRadius: '3px',
-                  fontFamily: '"Courier New", monospace',
+                  fontFamily: 'var(--font-body, DM Sans), sans-serif',
                 }}>
                   {tag}
                 </span>

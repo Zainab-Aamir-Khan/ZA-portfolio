@@ -107,7 +107,7 @@ export default function Hero() {
           letterSpacing: '0.15em',
           textTransform: 'uppercase',
           marginBottom: '1.2rem',
-          fontFamily: '"Courier New", monospace',
+          fontFamily: 'var(--font-body, DM Sans), sans-serif',
           display: 'flex', alignItems: 'center', gap: '10px',
           flexWrap: 'wrap', justifyContent: 'center',
         }}>

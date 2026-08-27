@@ -128,7 +128,7 @@ export default function Skills() {
         {/* Section label */}
         <div style={{
           fontSize: '11px', color: 'var(--text-muted, #888)',
-          fontFamily: '"Courier New", monospace',
+          fontFamily: 'var(--font-body, DM Sans), sans-serif',
           letterSpacing: '0.15em', textTransform: 'uppercase',
           marginBottom: '2.5rem',
           display: 'flex', alignItems: 'center', gap: '12px',
@@ -212,7 +212,7 @@ export default function Skills() {
             }}>
               <div>
                 <h2 style={{
-                  fontFamily: 'sans-serif',
+                  fontFamily: 'var(--font-body, DM Sans), sans-serif',
                   fontSize: 'clamp(1.4rem, 3vw, 2rem)',
                   fontWeight: 800,
                   color: 'var(--text, #fff)',

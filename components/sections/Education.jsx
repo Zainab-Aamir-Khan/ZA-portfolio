@@ -51,7 +51,7 @@ export default function Education() {
             fontWeight: 800,
             margin: 0,
             letterSpacing: '-0.03em',
-            fontFamily: 'sans-serif',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
           }}>
             Education
           </h2>
@@ -98,7 +98,7 @@ export default function Education() {
                 }}>
                   <span style={{
                     fontSize: '11px',
-                    fontFamily: 'monospace',
+                    fontFamily: 'var(--font-body, DM Sans), sans-serif',
                     letterSpacing: '0.15em',
                     fontWeight: 700,
                     color: edu.accentColor,
@@ -167,7 +167,7 @@ export default function Education() {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   fontSize: '12px',
-                  fontFamily: 'monospace',
+                  fontFamily: 'var(--font-body, DM Sans), sans-serif',
                   color: '#64748B',
                 }}>
                   <span>{edu.location}</span>

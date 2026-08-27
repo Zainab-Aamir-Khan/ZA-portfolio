@@ -94,7 +94,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <a href="#home" style={{
-          fontFamily: 'var(--font-display, "Plus Jakarta Sans"), sans-serif',
+          fontFamily: 'var(--font-body, DM Sans), sans-serif',
           fontSize: '1.4rem', fontWeight: 800,
           color: textColor, textDecoration: 'none',
           letterSpacing: '-0.02em', flexShrink: 0,
@@ -196,7 +196,7 @@ export default function Navbar() {
           alignItems: 'center', marginBottom: '2rem',
         }}>
           <span style={{
-            fontFamily: 'var(--font-display, "Plus Jakarta Sans"), sans-serif',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             fontWeight: 800, fontSize: '1.3rem', color: textColor,
           }}>
             KS<span style={{ color: accentColor }}>.</span>

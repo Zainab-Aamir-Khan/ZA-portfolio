@@ -60,7 +60,7 @@ export default function Experience() {
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, margin: 0, letterSpacing: '-0.03em', fontFamily: 'sans-serif' }}>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 800, margin: 0, letterSpacing: '-0.03em', fontFamily: 'var(--font-body, DM Sans), sans-serif' }}>
               Experience
             </h2>
             <div style={{ display: 'inline-block', marginTop: '0.5rem', background: '#131B2E', border: '1px solid #242F47', padding: '4px 12px', borderRadius: '6px', fontSize: '12px', color: '#94A3B8' }}>
@@ -72,7 +72,7 @@ export default function Experience() {
             href="https://linkedin.com" 
             target="_blank" 
             rel="noreferrer"
-            style={{ color: '#10B981', fontSize: '13px', fontFamily: 'monospace', textDecoration: 'none', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '6px 14px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.05)' }}
+            style={{ color: '#10B981', fontSize: '13px', fontFamily: 'var(--font-body, DM Sans), sans-serif', textDecoration: 'none', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '6px 14px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.05)' }}
           >
             LinkedIn Profile ↗
           </a>

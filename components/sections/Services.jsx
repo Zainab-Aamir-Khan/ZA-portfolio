@@ -83,7 +83,7 @@ function FAQItem({ faq, index }) {
           <span style={{
             fontSize: '10px',
             color: open ? 'var(--accent)' : 'var(--text-muted)',
-            fontFamily: '"Courier New", monospace',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             fontWeight: 700,
             flexShrink: 0,
             transition: 'color 0.2s',
@@ -154,7 +154,7 @@ export default function Services() {
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}>
           <h2 style={{
-            fontFamily: 'var(--font-display, Syne), sans-serif',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             fontSize: 'clamp(2rem, 5vw, 3.2rem)',
             fontWeight: 800,
             color: 'var(--text)',
@@ -236,7 +236,7 @@ export default function Services() {
           transition: 'opacity 0.6s ease 0.4s',
         }}>
           <h3 style={{
-            fontFamily: 'var(--font-display, Syne), sans-serif',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             fontSize: 'clamp(1.4rem, 3vw, 2rem)',
             fontWeight: 800,
             color: 'var(--text)',
@@ -278,14 +278,14 @@ export default function Services() {
             <div style={{
               fontSize: '11px',
               color: 'var(--accent)',
-              fontFamily: '"Courier New", monospace',
+              fontFamily: 'var(--font-body, DM Sans), sans-serif',
               letterSpacing: '0.12em',
               marginBottom: '14px',
             }}>
               AVAILABLE FOR PROJECTS
             </div>
             <h3 style={{
-              fontFamily: 'var(--font-display, Syne), sans-serif',
+              fontFamily: 'var(--font-body, DM Sans), sans-serif',
               fontSize: 'clamp(1.6rem, 4vw, 2.6rem)',
               fontWeight: 800,
               color: 'var(--text)',
@@ -397,7 +397,7 @@ function ServiceCard({ svc, index, inView }) {
     >
       <span style={{
         fontSize: '11px',
-        fontFamily: '"Courier New", monospace',
+        fontFamily: 'var(--font-body, DM Sans), sans-serif',
         color: svc.color,
         fontWeight: 700,
         letterSpacing: '0.05em',

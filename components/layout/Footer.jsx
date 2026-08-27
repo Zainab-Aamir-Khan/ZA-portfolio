@@ -36,7 +36,7 @@ export default function Footer() {
           <span
             onClick={scrollToTop}
             style={{
-              fontFamily: 'var(--font-display, Syne), sans-serif',
+              fontFamily: 'var(--font-body, DM Sans), sans-serif',
               fontSize: '1.1rem',
               fontWeight: 800,
               color: 'var(--accent)',
@@ -55,7 +55,7 @@ export default function Footer() {
           <span style={{
             fontSize: '11px',
             color: 'var(--text-muted)',
-            fontFamily: '"Courier New", monospace',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
           }}>
             © 2026 Zainab Aamir. All rights reserved.
           </span>
@@ -75,7 +75,7 @@ export default function Footer() {
                 fontSize: '11px',
                 color: hoveredLink === link.label ? 'var(--accent)' : 'var(--text-muted)',
                 textDecoration: 'none',
-                fontFamily: '"Courier New", monospace',
+                fontFamily: 'var(--font-body, DM Sans), sans-serif',
                 letterSpacing: '0.04em',
                 transition: 'color 0.2s',
               }}

@@ -196,7 +196,7 @@ function ProjectCard({ project, index, inView }) {
               border: `1px solid ${project.color}40`,
               color: project.color,
               padding: '2px 7px', borderRadius: '3px',
-              fontFamily: '"Courier New", monospace',
+              fontFamily: 'var(--font-body, DM Sans), sans-serif',
             }}>
               {tag}
             </span>
@@ -261,7 +261,7 @@ export default function Projects() {
             style={{
               fontSize: '11px', color: 'var(--accent)',
               textDecoration: 'none',
-              fontFamily: '"Courier New", monospace',
+              fontFamily: 'var(--font-body, DM Sans), sans-serif',
               border: '1px solid var(--border)',
               padding: '6px 14px', borderRadius: '6px',
               transition: 'border-color 0.2s',

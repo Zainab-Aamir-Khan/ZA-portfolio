@@ -13,7 +13,7 @@ A high-performance, modern portfolio built with React, focused on clean UI, comp
 <a href="https://kiran-portfolio.vercel.app">
   <img src="https://img.shields.io/badge/Live%20Demo-111827?style=for-the-badge&logo=vercel&logoColor=white" />
 </a>
-<a href="https://github.com/kiranShamsHere/KS-Portfolio">
+<a href="https://github.com/Zainab-Aamir-Khan/KS-Portfolio">
   <img src="https://img.shields.io/badge/Repository-000000?style=for-the-badge&logo=github&logoColor=white" />
 </a>
 
@@ -81,7 +81,7 @@ KS-Portfolio/
 ## Local Setup
 
 ```bash id="elite2"
-git clone https://github.com/kiranShamsHere/KS-Portfolio.git
+git clone https://github.com/Zainab-Aamir-Khan/KS-Portfolio.git
 cd KS-Portfolio
 npm install
 npm run dev
@@ -108,8 +108,8 @@ The application is deployed using Vercel, ensuring fast global delivery and seam
 
 ## Contact
 
-* GitHub: https://github.com/kiranShamsHere
-LinkedIn: https://linkedin.com/in/kiranshams
+* GitHub: https://github.com/Zainab-Aamir-Khan
+LinkedIn: https://www.linkedin.com/in/zainab-aamir-31b6b91ba/
 
 ---
 

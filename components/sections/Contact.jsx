@@ -81,7 +81,7 @@ export default function Contact() {
           <div style={{
             fontSize: '9px',
             color: 'var(--accent-orchid, #1E9E75)',
-            fontFamily: '"Courier New", monospace',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             letterSpacing: '0.18em',
             marginBottom: '16px',
             textTransform: 'uppercase',
@@ -90,7 +90,7 @@ export default function Contact() {
           </div>
 
           <h2 style={{
-            fontFamily: 'var(--font-display, "Plus Jakarta Sans"), sans-serif',
+            fontFamily: 'var(--font-body, DM Sans), sans-serif',
             fontSize: 'clamp(2.2rem, 6vw, 4rem)',
             fontWeight: 800,
             color: 'var(--text-main, #FFFFFF)',
@@ -157,7 +157,7 @@ export default function Contact() {
                 fontSize: '13px',
                 color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
-                fontFamily: 'inherit',
+                fontFamily: 'var(--font-body, DM Sans), sans-serif',
               }}
             />
           </div>
@@ -193,7 +193,7 @@ export default function Contact() {
                 fontSize: '13px',
                 color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
-                fontFamily: 'inherit',
+                fontFamily: 'var(--font-body, DM Sans), sans-serif',
               }}
             />
           </div>
@@ -231,7 +231,7 @@ export default function Contact() {
                 color: 'var(--text-main, #FFFFFF)',
                 outline: 'none',
                 resize: 'none',
-                fontFamily: 'inherit',
+                fontFamily: 'var(--font-body, DM Sans), sans-serif',
                 lineHeight: 1.7,
               }}
             />
@@ -301,8 +301,8 @@ export default function Contact() {
           }}>
             {[
               { label: 'zaamir427@gmail.com', href: 'mailto:zaamir427@gmail.com' },
-              { label: 'GitHub ↗', href: 'https://github.com/kiranShamsHere' },
-              { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/kiranshams' },
+              { label: 'GitHub ↗', href: 'https://github.com/Zainab-Aamir-Khan' },
+              { label: 'LinkedIn ↗', href: 'https://www.linkedin.com/in/zainab-aamir-31b6b91ba/' },
             ].map(l => (
               <a
                 key={l.label}
@@ -313,7 +313,7 @@ export default function Contact() {
                   fontSize: '11px',
                   color: 'var(--text-muted, #D8C4D6)',
                   textDecoration: 'none',
-                  fontFamily: '"Courier New", monospace',
+                  fontFamily: 'var(--font-body, DM Sans), sans-serif',
                   transition: 'color 0.2s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-orchid, #1E9E75)'}
