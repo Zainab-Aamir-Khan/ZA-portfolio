@@ -74,13 +74,13 @@ export default function Contact() {
             position: 'absolute', top: '50%', left: '50%',
             transform: 'translate(-50%, -50%)',
             width: '500px', height: '200px',
-            background: 'radial-gradient(ellipse, rgba(163,118,162,0.15) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(30,158,117,0.15) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
           <div style={{
             fontSize: '9px',
-            color: 'var(--accent-orchid, #A376A2)',
+            color: 'var(--accent-orchid, #1E9E75)',
             fontFamily: '"Courier New", monospace',
             letterSpacing: '0.18em',
             marginBottom: '16px',
@@ -99,7 +99,7 @@ export default function Contact() {
             lineHeight: 1.05,
           }}>
             Have an idea?<br/>
-            <span style={{ color: 'var(--accent-orchid, #A376A2)' }}>Let's build it.</span>
+            <span style={{ color: 'var(--accent-orchid, #1E9E75)' }}>Let's build it.</span>
           </h2>
 
           <p style={{
@@ -270,9 +270,9 @@ export default function Contact() {
               type="submit"
               disabled={sending || sent}
               style={{
-                background: sent ? 'transparent' : 'var(--accent-orchid, #A376A2)',
+                background: sent ? 'transparent' : 'var(--accent-orchid, #1E9E75)',
                 color: '#FFFFFF',
-                border: sent ? '1px solid var(--accent-orchid, #A376A2)' : 'none',
+                border: sent ? '1px solid var(--accent-orchid, #1E9E75)' : 'none',
                 padding: '11px 28px',
                 borderRadius: '8px',
                 fontSize: '13px',
@@ -316,7 +316,7 @@ export default function Contact() {
                   fontFamily: '"Courier New", monospace',
                   transition: 'color 0.2s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-orchid, #A376A2)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-orchid, #1E9E75)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted, #D8C4D6)'}
               >
                 {l.label}

@@ -144,7 +144,7 @@ export default function Navbar() {
           {/* Hire Me */}
           <a href="#contact" style={{
             background: isDark ? accentColor : textColor,
-            color: isDark ? '#0F172A' : '#FDFBF7',
+            color: isDark ? '#1E9E75' : '#FDFBF7',
             padding: '8px 18px', borderRadius: '6px',
             textDecoration: 'none', fontSize: '13px', fontWeight: 700,
             whiteSpace: 'nowrap', transition: 'opacity 0.2s',
