@@ -69,7 +69,7 @@ export default function Experience() {
           </div>
 
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/zainab-aamir-31b6b91ba/" 
             target="_blank" 
             rel="noreferrer"
             style={{ color: '#10B981', fontSize: '13px', fontFamily: 'var(--font-body, DM Sans), sans-serif', textDecoration: 'none', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '6px 14px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.05)' }}
